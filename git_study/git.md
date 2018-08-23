@@ -103,5 +103,5 @@
 ### 推送到远程的仓库
 >>``` git push [alias] [branch]```
 >>>命令将你的 [branch] 分支推送成为 [alias] 远程仓库上的 [branch] 分支
-### 删除远程仓库
+### 删除远程仓库 
 >> ```git remote rm  [别名]```
