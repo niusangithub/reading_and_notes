@@ -2,7 +2,7 @@
 > git reset HEAD
 >> 暂存区的目录树会被重写，被 master 分支指向的目录树所替换，但是工作区不受影响
 #
-> git rm --cached <file>
+>[TOC] git rm --cached <file>
 >> 会直接从暂存区删除文件，工作区则不做出改变
 #
 > git checkout .  或者  git checkout --<file>
