@@ -77,4 +77,21 @@
 >>>只想查找指定用户的提交日志
 #
 >>git log --oneline --before={3.weeks.ago} --after={2010-04-18} --no-merges
->>>指定日期( Git 项目中三周前且在四月十八日之后的所有提交，我可以执行这个--no-merges 选项以隐藏合并提交)
+>>>指定日期( Git 项目中三周前且在四月十八日之后的所有提交，执行这个--no-merges 选项以隐藏合并提交)
+
+### git Tag标签
+>>git tag -a v1.0 
+#
+>>```git tag -a <tagname> -m "runoob.com标签"```
+>>>指定标签信息命令
+#
+>>git tag -s <tagname> -m "runoob.com标签"
+>>>PGP签名标签命令
+
+### git远程仓库
+>>```git remote add [shortname] [url]```
+>>>添加一个远程的仓库
+#
+>>查看当前的远程库 git remote
+>>> git remove -v 
+>>>>查看每个别名的实际地址
