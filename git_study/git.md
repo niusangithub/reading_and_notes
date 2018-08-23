@@ -1,9 +1,7 @@
-### git笔记
+## git笔记
 >``` git reset HEAD```
 >> 暂存区的目录树会被重写，被 master 分支指向的目录树所替换，但是工作区不受影响
 #
-
-
 >``` git rm --cached <file>```
 >> 会直接从暂存区删除文件，工作区则不做出改变
 #
@@ -12,3 +10,38 @@
 #
 > ```git checkout HEAD 或者 git checkout HEAD <file>```
 >> HEAD 指向的 master 分支中的全部或者部分文件替换暂存区和以及工作区中的文件。清除工作区中未提交的改动，也会清除暂存区中未提交的改动
+
+### git创建仓库
+>```git init / git init newrepo ```
+>>>``` git clone ```
+>> 初始化
+### git基本操作
+>>>``` git add *.c```
+>>>``` git add README```
+#
+>>>>命令用于查看项目的当前状态。
+>>>```git status ```
+>>>```git status -s 简短的输出```
+#
+>>> ``` git diff ```
+>>>>git diff 命令显示已写入缓存与已修改但尚未写入缓存的改动的区别
+>>>>>>git diff 尚未缓存的改动
+>>>>>>git  diff --cached查看已缓存的改动
+>>>>>>git diff HEAD 查看已缓存和未缓存的改动
+>>>>>>git diff --stat 显示摘要而非整个diff
+#
+>>>>命令可将该文件添加到缓存
+>>>``` git commit -m '初始化项目'```
+>>>``` git commit -am '跳过git add '```
+#
+>>> ``` git rm <file> / git rm -f <file>```
+>>>移除某个文件 / 如果已经放到缓存区
+>>>```git rm --cached <file>```
+>>> 把文件从缓存区移除，但仍希望保留在当前目录中
+>>>```git rm –r * ```
+>>>递归删除，即如果后面跟的是一个目录做为参数，则会递归删除整个目录中的所有子目录和文件
+#
+>>>``` git mv```
+>>>git mv 命令用于移动或重命名一个文件、目录、软连接。
+
+
