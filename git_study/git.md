@@ -95,3 +95,13 @@
 >>查看当前的远程库 git remote
 >>> git remove -v 
 >>>>查看每个别名的实际地址
+#
+>>git fetch
+>>>从远程仓库下载新分支与数据
+>>>>命令执行完后需要执行git merge 
+>>>>>git merge 
+### 推送到远程的仓库
+>>``` git push [alias] [branch]```
+>>>命令将你的 [branch] 分支推送成为 [alias] 远程仓库上的 [branch] 分支
+### 删除远程仓库
+>> ```git remote rm  [别名]```
