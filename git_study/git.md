@@ -4,7 +4,7 @@
 #
 
 
-> git rm --cached '<file>'
+>``` git rm --cached '<file>'```
 >> 会直接从暂存区删除文件，工作区则不做出改变
 #
 > git checkout .  或者  git checkout --<file>
