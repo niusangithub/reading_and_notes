@@ -44,4 +44,37 @@
 >>``` git mv```
 >>>git mv 命令用于移动或重命名一个文件、目录、软连接。
 
+### git分支管理
+>>git branch 
+>>>git创建分支
+#
+>>git checkout 
+>>>git切换分支
+#
+>>git merge 
+>>>合并分支
+#
+>> git checkout -b 
+>>> 创建新的分支，并且立即切换到该分支下
+#
+>> git branch -d 
+>>> 删除分支
+#
+>>>合并分支并且出现冲突，手动解决冲突后，用git add 告诉Git文件冲突已经解决了
 
+### git查看提交历史
+>>git log 
+>>>git log --oneline
+>>>>查看提交记录的简洁版
+#
+>>git log --oneline --graph
+>>>查看历史中什么时候出现了分支、合并
+#
+>>git log --reverse --oneline
+>>>用 '--reverse'参数来逆向显示所有日志
+#
+>>git log --author=Linus --oneline -5
+>>>只想查找指定用户的提交日志
+#
+>>git log --oneline --before={3.weeks.ago} --after={2010-04-18} --no-merges
+>>>指定日期( Git 项目中三周前且在四月十八日之后的所有提交，我可以执行这个--no-merges 选项以隐藏合并提交)
