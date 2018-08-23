@@ -14,14 +14,14 @@
 ### git创建仓库
 >```git init / git init newrepo ```
 >>>``` git clone ```
->> 初始化
+>>>> 初始化
 ### git基本操作
->>>``` git add *.c```
+>>``` git add *.c```
 >>>``` git add README```
 #
->>>>命令用于查看项目的当前状态。
+>>命令用于查看项目的当前状态。
 >>>```git status ```
->>>```git status -s 简短的输出```
+>>>>```git status -s 简短的输出```
 #
 >>> ``` git diff ```
 >>>>git diff 命令显示已写入缓存与已修改但尚未写入缓存的改动的区别
@@ -31,17 +31,17 @@
 >>>>>>git diff --stat 显示摘要而非整个diff
 #
 >>>>命令可将该文件添加到缓存
->>>``` git commit -m '初始化项目'```
+>>``` git commit -m '初始化项目'```
 >>>``` git commit -am '跳过git add '```
 #
->>> ``` git rm <file> / git rm -f <file>```
+>> ``` git rm <file> / git rm -f <file>```
 >>>移除某个文件 / 如果已经放到缓存区
->>>```git rm --cached <file>```
->>> 把文件从缓存区移除，但仍希望保留在当前目录中
+>>```git rm --cached <file>```
+>> 把文件从缓存区移除，但仍希望保留在当前目录中
 >>>```git rm –r * ```
 >>>递归删除，即如果后面跟的是一个目录做为参数，则会递归删除整个目录中的所有子目录和文件
 #
->>>``` git mv```
+>>``` git mv```
 >>>git mv 命令用于移动或重命名一个文件、目录、软连接。
 
 
