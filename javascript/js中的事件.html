@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    事件：
+    1，事件发生于DOM，window,Document
+    2, 预定义和自定义的时刻
+    3，事件类型   string表示当前的事件是什么类型
+       事件目标   事件发生在哪个对象上
+       事件处理程序  函数
+       事件对象    事件本身。
+    4，事件对象
+    5，事件流
+
+    如何去触发一个事件
+        1，html事件
+                html内联事件方式
+        2，通过属性触发，属性事件
+        3，事件回调。
+    
+    html事件  document不支持html事件
+    DOM0事件
+    DOM2事件
+
+    例子 ： <div onclick="alert(e)">div</div>
+            html +  属性名  +  需要执行的js代码
+          注意的地方：1，js 中的 ""  <>  &&  需要转意
+                     2,这个js所在的作用于就是全局作用域
+                     3,html事件会封装一个event
+                     4，this指向了触发了当前执行的元素
+         setAttribute();可以修改
+            问题：时间差问题
+                try{}catch(){}
+                解析规则和识别规则，是有区别的。
+                代码写法上的耦合度的问题
+                
+        DOM0事件
+            解决了跨浏览器的问题
+            增加事件，获取元素， 属性名全是小写的
+            当前节点对应的时间属性赋值为null 
+            setAttribute
+            节点复制：事件也是会被复制一份，比较重要的地方，
+
+            解决了：时间差的问题，浏览器差异，耦合度的问题。
+
+            一次只能指定一个事件处理程序。
+
+        事件流：
+            事件冒泡，  目标--->document
+            事件捕获，  
+                        document  实际上都是从window开始捕获。
+        DOM2事件  事件捕获  目标阶段   冒泡阶段
+            addEcventListener();
+            removeEventListener()
+            this 指向当前的元素
+                1，事件名称，2，事件处理对应的函数，3，布尔值 
+
+
+        属性事件
+            IE非常不友好。自己制定了一个规范，一个是touchevent
+            时间优先级和事件对象。
+        
+        js中的事件
+            事件流  
+            1，事件优先级
+                dom0(html) 
+                dom2属性事件
+                
+                HTML 事件会被覆盖掉
+
+                事件监听的时候，事件冒泡和事件捕获
+
+                DOM0  DOM2 冒泡阶段执行 
+            捕获事件 。。。 外层 。。。内层。。 目标阶段。 
+
+            事件发生在目标元素上，事件的执行顺序是绑定的顺序。
+
+            冒泡阶段：哪个事件先绑定，哪个事件先执行。
+            addEcventListener  和 onclick 
+                属性事件先执行
+                    浏览器绑定的事件。事件的绑定时浏览器绑的。html上面已经有onclick属性
+                    覆盖了html事件中覆盖了。
+        
+        简单的归纳：
+            冒泡阶段绑定了哪些函数，简单的归纳，事件发生后，
+
+            事件的传递和 css 有没有关系呢，
+            
+            事件的绑定
+
+            事件点投
+
+            touch事件
+                js中的事件穿透
+            
+            执行和使用的方法
+                事件对象，默认的情况下，事件处理程序中
+                    event参数。。
+            ie浏览器和首先和参数处理  event的兼容操作
+                事件对象的属性：
+                    点击事件
+                    事件对象的属性，bable
+                
+        
+</body>
+</html>

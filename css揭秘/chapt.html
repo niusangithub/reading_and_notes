@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .btn {
+            padding: 6px 16px;
+            border: 1px solid #446d88;
+            background: #58a linear-gradient(hsla(0, 0%, 100%, .2),
+            transparent);
+            border-radius: 4px;
+            box-shadow: 0 1px 5px gray;
+            color: white;
+            text-shadow: 0 -1px 1px #335166;
+            font-size: 20px;
+            line-height: 30px;
+            outline: none;
+            cursor: pointer;
+        }
+
+        .btn.OK {
+            background-color: #c00;
+        }
+
+        .btn.cancel {
+            background-color: #6b0;
+        }
+
+        .btn.currentColor {
+            color: aqua;
+            background-color: currentColor;
+        }
+
+        .callout {
+            position: relative;
+            width: 100px;
+            height: 50px;
+            margin: 20px 20px;
+            margin-bottom: 0px;
+            background-color: #0da520;
+        }
+
+        .callout::before {
+            content: "";
+            position: absolute;
+            top: -.4em;
+            left: 1em;
+            padding: .35em;
+            background: inherit;
+            border: inherit;
+            border-right: 0;
+            border-bottom: 0;
+            transform: rotate(45deg);
+        }
+
+        .bg-color {
+            margin: 20px auto;
+            width: 100px;
+            height: 100px;
+            background-clip: padding-box;
+            box-shadow: 0 0 0 10px #655 inset, 0 0 0 20px deeppink inset;
+            background: red;
+        }
+
+        .bg-color,
+        .bg-outline:hover {
+            cursor: pointer;
+        }
+
+        .bg-outline {
+            margin: 20px auto;
+            width: 100px;
+            height: 100px;
+            background: yellow;
+            border: 10px solid #ccc;
+            outline: 1px dashed red;
+            outline-offset: -5px;
+        }
+
+        .something-meaningful {
+            margin: 20px auto;
+            width: 200px;
+            height: 100px;
+            background: #655;
+            padding: .8em;
+        }
+
+        .something-meaningful>div {
+            background: tan;
+            border-radius: .8em;
+            padding: 1em;
+        }
+
+        .one-meaningful {
+            margin: 20px auto;
+            width: 200px;
+            height: 80px;
+            background: tan;
+            border-radius: .8em;
+            padding: 1em;
+            box-shadow: 0 0 0 0.34em #655;
+            outline: .6em solid #655;
+        }
+
+        .bg-gradient {
+            margin: 20px auto;
+            width: 200px;
+            height: 80px;
+            background: linear-gradient(#fb3 50%, #58a 0);
+            background-size: 100% 40px;
+        }
+
+        .bg-gradient.row {
+            background: linear-gradient(to right, /* 或 90deg */
+            #fb3 50%, #58a 0);
+            background-size: 30px 100%;
+        }
+
+        .bg-gradient.incline {
+            background: repeating-linear-gradient(45deg,
+            #fb3, #58a 30px);
+        }
+
+        .bg-complex {
+            display: inline-block;
+            margin: 20px auto;
+            width: 200px;
+            height: 120px;
+
+        }
+
+        .bg-complex.one {
+            background: white;
+            background-image: linear-gradient(90deg,
+            rgba(200, 0, 0, .5) 50%, transparent 0),
+            linear-gradient( rgba(200, 0, 0, .5) 50%, transparent 0);
+            background-size: 30px 30px;
+        }
+
+        .bg-complex.two {
+            background: #58a;
+            background-image: linear-gradient(white 1px, transparent 0),
+            linear-gradient(90deg, white 1px, transparent 0);
+            background-size: 30px 30px;
+        }
+
+        .bg-complex.three {
+            background: #58a;
+            background-image: linear-gradient(white 2px, transparent 0),
+            linear-gradient(90deg, white 2px, transparent 0),
+            linear-gradient(hsla(0, 0%, 100%, .3) 1px,
+            transparent 0),
+            linear-gradient(90deg, hsla(0, 0%, 100%, .3) 1px,
+            transparent 0);
+            background-size: 75px 75px, 75px 75px,
+            15px 15px, 15px 15px;
+        }
+
+        .bg-complex.four {
+            background: #655;
+            background-image: radial-gradient(tan 30%, transparent 0);
+            background-size: 30px 30px;
+        }
+
+        .bg-complex.five {
+            background: #655;
+            background-image: radial-gradient(tan 30%, transparent 0),
+            radial-gradient(tan 30%, transparent 0);
+            background-size: 30px 30px;
+            background-position: 0 0, 15px 15px;
+        }
+
+        .bg-complex.six {
+            background: #eee;
+            background-image: linear-gradient(45deg, #bbb 50%, transparent 0);
+            background-size: 30px 30px;
+        }
+
+        .bg-complex.seven {
+            background: #eee;
+            background-image: linear-gradient(45deg,
+            rgba(0, 0, 0, .25) 25%, transparent 0,
+            transparent 75%, rgba(0, 0, 0, .25) 0),
+            linear-gradient(45deg,
+            rgba(0, 0, 0, .25) 25%, transparent 0,
+            transparent 75%, rgba(0, 0, 0, .25) 0);
+            background-position: 0 0, 15px 15px;
+            background-size: 30px 30px;
+        }
+
+        .bg-complex.random-one {
+            background: linear-gradient(90deg,
+            #fb3 15%, #655 0, #655 40%,
+            #ab4 0, #ab4 65%, hsl(20, 40%, 90%) 0);
+            background-size: 80px 100%;
+        }
+
+        .bg-complex.random-two {
+            margin-left: 30px;
+            background: hsl(20, 40%, 90%);
+            background-image: linear-gradient(90deg, #fb3 11px, transparent 0),
+            linear-gradient(90deg, #ab4 23px, transparent 0),
+            linear-gradient(90deg, #655 41px, transparent 0);
+            background-size: 41px 100%, 61px 100%, 83px 100%;
+        }
+
+        .bg-complex.random-three {
+            padding: 1em;
+            border: 1px solid transparent;
+            background: linear-gradient(white, white) padding-box,
+            repeating-linear-gradient(-45deg,
+            black 0, black 25%, white 0, white 50%) 0 / .6em .6em;
+            animation: ants 12s linear infinite;
+        }
+
+        @keyframes ants {
+            to {
+                background-position: 100%
+            }
+        }
+
+        .bg-circle {
+            display: inline-block;
+            margin: 20px 0;
+            width: 200px;
+            height: 200px;
+            background: #fb3;
+        }
+
+        .bg-circle.one {
+            border-radius: 100px;
+        }
+
+        .bg-circle.two {
+            border-radius: 70px / 50px;
+        }
+
+        .bg-circle.three {
+            border-radius: 50%/50%;
+        }
+
+        .bg-calc {
+            margin: 20px auto;
+            width: 200px;
+            height: 200px;
+            background: #fb3;
+            text-align: center;
+            line-height: 200px;
+            position: relative;
+        }
+
+        .bg-calc::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            z-index: -1;
+            background: #58a;
+            transform: skew(45deg);
+        }
+
+        .picture {
+            display: block;
+            width: 100px;
+            height: 100px;
+            margin: 10px auto;
+            transform: rotate(45deg);
+            overflow: hidden;
+        }
+
+        .picture>img {
+            max-width: 100%;
+            transform: rotate(-45deg);
+        }
+
+        .img-cat {
+            display: block;
+            width: 100px;
+            height: 100px;
+            margin: 10px auto;
+            clip-path: polygon(50% 0, 100% 50%,
+            50% 100%, 0 50%);
+            transition: 1s clip-path;
+        }
+
+        img:hover {
+            clip-path: polygon(0 0, 100% 0,
+            100% 100%, 0 100%);
+        }
+
+        .cat-corner {
+            margin: 0 auto;
+            width: 200px;
+            height: 100px;
+            background: #58a;
+            background: linear-gradient(135deg, transparent 15px, #58a 0) top left,
+            linear-gradient(-135deg, transparent 15px, #58a 0) top right,
+            linear-gradient(-45deg, transparent 15px, #58a 0) bottom right,
+            linear-gradient(45deg, transparent 15px, #58a 0) bottom left;
+            background-size: 50% 50%;
+            background-repeat: no-repeat;
+        }
+
+        h5 {
+            font-weight: 900;
+            padding-left: 100px;
+        }
+
+        .cat-rec {
+            margin: 20px auto;
+            width: 200px;
+            height: 100px;
+            background: #58a;
+            background: radial-gradient(circle at top left,
+            transparent 15px, #58a 0) top left,
+            radial-gradient(circle at top right,
+            transparent 15px, #58a 0) top right,
+            radial-gradient(circle at bottom right,
+            transparent 15px, #58a 0) bottom right,
+            radial-gradient(circle at bottom left,
+            transparent 15px, #58a 0) bottom left;
+            background-size: 50% 50%;
+            background-repeat: no-repeat;
+        }
+
+        .tab {
+            width: 200px;
+            height: 100px;
+            margin: 0 auto;
+            position: relative;
+            padding: .5em 1em .35em;
+            color: white;
+        }
+
+        .tab::before {
+            content: '';
+            /* 用伪元素来生成一个矩形 */
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            z-index: -1;
+            background: #58a;
+            transform: perspective(.5em) rotateX(5deg);
+        }
+
+        .pie {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: yellowgreen;
+            margin: 10px auto;
+            background-image: linear-gradient(to right, transparent 50%, #655 0);
+        }
+
+        .pie1 {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: yellowgreen;
+            margin: 10px auto;
+            background-image: linear-gradient(to right, transparent 50%, #655 0);
+        }
+
+        .pie1::before {
+            content: '';
+            display: block;
+            margin-left: 50%;
+            height: 100%;
+            border-radius: 0 100% 100% 0 / 50%;
+            background-color: inherit;
+            transform-origin: left;
+            animation: spin 3s linear infinite,
+            bg 6s step-end infinite;
+            animation: spin 50s linear infinite,
+            bg 100s step-end infinite;
+            /* animation-play-state: paused;
+animation-delay: inherit; */
+        }
+
+        .pie::before {
+            content: '';
+            display: block;
+            margin-left: 50%;
+            height: 100%;
+            border-radius: 0 100% 100% 0 / 50%;
+            background-color: inherit;
+            transform-origin: left;
+            animation: spin 3s linear infinite,
+            bg 6s step-end infinite;
+
+            /* animation: spin 50s linear infinite,
+bg 100s step-end infinite; */
+            animation-play-state: paused;
+            animation-delay: inherit;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(.5turn);
+            }
+        }
+
+        @keyframes bg {
+            50% {
+                background: #655;
+            }
+        }
+
+        .bg-box-shadow {
+            width: 200px;
+            height: 100px;
+            text-align: center;
+            line-height: 100px;
+            margin: 10px auto 0;
+            background: #da520a;
+            box-shadow: 2px 3px 4px rgba(0, 0, 0, .5);
+        }
+
+        .bg-box-shadow.single {
+            box-shadow: 0 5px 4px -4px black;
+        }
+
+        .bg-box-shadow.two {
+            box-shadow: 6px 6px 12px -6px black;
+        }
+
+        .bg-box-shadow.three {
+            box-shadow: 15px 0 15px -15px black,
+            -15px 0 15px -15px black;
+        }
+
+        .bgc-zhejiao {
+            width: 500px;
+            height: 100px;
+            padding: 20px;
+            margin: 10px auto;
+            background: #58a;
+            /* 回退样式 */
+            background: linear-gradient(to left bottom,
+            transparent 50%, rgba(0, 0, 0, .4) 0) no-repeat 100% 0 / 2em 2em,
+            linear-gradient(-135deg,
+            transparent 1.5em, #58a 0);
+        }
+
+        .bgc-zhejiao2 {
+            width: 500px;
+            height: 100px;
+            padding: 20px;
+            margin: 10px auto;
+            background: #58a;
+            background: #58a;
+            /* 回退样式 */
+            background: linear-gradient(to left bottom,
+            transparent 50%, rgba(0, 0, 0, .4) 0) no-repeat 100% 0 / 3em 1.73em,
+            linear-gradient(-150deg,
+            transparent 1.5em, #58a 0);
+        }
+
+        .bgc-zhejiao3 {
+            width: 500px;
+            height: 100px;
+            padding: 20px;
+            margin: 10px auto;
+            position: relative;
+            background: #58a;
+            /* 回退样式 */
+            background: linear-gradient(-150deg,
+            transparent 1.5em, #58a 0);
+            border-radius: .5em;
+        }
+
+        .bgc-zhejiao3::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            background: linear-gradient(to left bottom,
+            transparent 50%, rgba(0, 0, 0, .2) 0, rgba(0, 0, 0, .4)) 100% 0 no-repeat;
+            width: 1.73em;
+            height: 3em;
+            transform: translateY(-1.3em) rotate(-30deg);
+            transform-origin: bottom right;
+            border-bottom-left-radius: inherit;
+            box-shadow: -.2em .2em .3em -.1em rgba(0, 0, 0, .15);
+        }
+    </style>
+</head>
+
+<body>
+    <h5>字体排印</h5>
+    <div></div>
+    <hr>
+    <h5>折角效果</h5>
+    <div class="bgc-zhejiao">
+        无时不以之为念，无刻不以之为思，唯愿不离不弃而不至相忘于流年。不思路远，不惧时长，唯恐不坚不笃而不能相守于朝暮。不可期之相遇，不可测之未来，不能明语于人而不能耽忘于己。君之千里，而不苦不怨；思之淼淼，而不变初衷。怎奈才浅，所困所想，一纸难言，一笔难书。然虽路漫漫而修远，相携之幸，心照不宣。
+    </div>
+    <div class="bgc-zhejiao2">
+        无时不以之为念，无刻不以之为思，唯愿不离不弃而不至相忘于流年。不思路远，不惧时长，唯恐不坚不笃而不能相守于朝暮。不可期之相遇，不可测之未来，不能明语于人而不能耽忘于己。君之千里，而不苦不怨；思之淼淼，而不变初衷。怎奈才浅，所困所想，一纸难言，一笔难书。然虽路漫漫而修远，相携之幸，心照不宣。
+    </div>
+    <div class="bgc-zhejiao3">
+        无时不以之为念，无刻不以之为思，唯愿不离不弃而不至相忘于流年。不思路远，不惧时长，唯恐不坚不笃而不能相守于朝暮。不可期之相遇，不可测之未来，不能明语于人而不能耽忘于己。君之千里，而不苦不怨；思之淼淼，而不变初衷。怎奈才浅，所困所想，一纸难言，一笔难书。然虽路漫漫而修远，相携之幸，心照不宣。
+    </div>
+    <br>
+    <h5>毛玻璃效果</h5>
+    <div class="container">
+        <main>
+            <blockquote>
+                "The only way to get rid of a temptation "The only way to get rid of a temptation"
+                <footer>－
+                    <cite>
+                        Oscar Wilde, The Picture of Dorian Gray
+                    </cite>
+                </footer>
+            </blockquote>
+        </main>
+    </div>
+    <hr>
+    <h5>单侧投影</h5>
+    <div class="bg-box-shadow"></div>
+    <div class="bg-box-shadow single">单侧投影</div>
+    <div class="bg-box-shadow two">邻边投影</div>
+    <div class="bg-box-shadow three">双侧投影</div>
+    <br>
+    <h5>简单的饼图</h5>
+    <div class="pie1"></div>
+    <div class="pie" style="animation-delay: -20s"></div>
+    <div class="pie" style="animation-delay: -60s"></div>
+    <hr>
+    <h5>梯形页面</h5>
+    <div class="tab"></div>
+    <hr style="margin-top: 100px;">
+    <h5>切角效果</h5>
+    <div class="cat-corner"></div>
+    <div class="cat-rec"></div>
+    <hr>
+    <h5>菱形图片</h5>
+    <div class="picture">
+        <img src="https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=1664046681,2819348447&fm=26&gp=0.jpg" alt="..." />
+    </div>
+    <img class="img-cat" src="https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=1664046681,2819348447&fm=26&gp=0.jpg"
+        alt="..." />
+    <hr>
+    <div class="bg-calc ">
+        平行四边形
+    </div>
+    <hr>
+    <h5>自适应椭圆</h5>
+    <div class="bg-circle one"></div>
+    <div class="bg-circle two"></div>
+    <div class="bg-circle three"></div>
+
+
+    <hr>
+    <h5>伪随机背景</h5>
+    <div class="bg-complex random-one"></div>
+    <div class="bg-complex random-two"></div>
+    <div class="bg-complex random-three">蚂蚁行军线</div>
+
+    <hr>
+    <h5>复杂的背景图案</h5>
+    <div class="bg-complex one"></div>
+    <div class="bg-complex two"></div>
+    <div class="bg-complex three"></div>
+    <div class="bg-complex four"></div>
+    <div class="bg-complex five"></div>
+    <div class="bg-complex six"></div>
+    <div class="bg-complex seven"></div>
+    <br>
+    <h5>条纹背景</h5>
+    <div class="bg-gradient"></div>
+    <div class="bg-gradient row"></div>
+    <div class="bg-gradient incline"></div>
+    <hr>
+    <h6>边框内圆角</h6>
+    <div class="one-meaningful"> I have a nice subtle inner rounding, don't I look pretty?</div>
+    <div class="something-meaningful">
+        <div>
+            I have a nice subtle inner rounding, don't I look pretty?
+        </div>
+    </div>
+
+    <hr>
+    <div class="bg-outline"></div>
+    <div class="bg-color"></div>
+    <br>
+    <button class="btn">Button</button>
+    <button class="btn OK">OK！</button>
+    <button class="btn cancel">cancel </button>
+    <button class="btn currentColor">currentColor</button>
+    <hr>
+    <div class="callout"></div>
+</body>
+
+</html>

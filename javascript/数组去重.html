@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //数组去重
+        var arr = [1, 2, 3, 3, 3, 4, 5, 7, 6, 9, 9, 9],
+            arrLength = arr.length;
+        //方法一  创建新的数组
+        Array.prototype.unique1 = function () {
+            var newArr = [];
+            var isPush = true;
+            for (var i = 0; i < arrLength; i++) {
+                for (var j = 0, newLength = newArr.length; j < newLength; j++) {
+                    if (arr[i] === newArr[j]) {
+                        isPush = false;
+                        break;
+                    }
+                }
+                if (isPush) {
+                    newArr.push(arr[i]);
+                }
+                isPush = true;
+            }
+            return newArr;
+        }
+        console.log('方法一', [].unique1());
+        // 方法二 创建新的数组
+        Array.prototype.unique2 = function () {
+            var newArr = [];
+            var isPush = true;
+            for (var i = 0; i < arrLength; i++) {
+                for (var j = i + 1; j < arrLength; j++) {
+                    if (arr[i] === arr[j]) {
+                        isPush = false;
+                        break;
+                    }
+                }
+                if (isPush) {
+                    newArr.push(arr[i]);
+                }
+                isPush = true;
+            }
+            return newArr;
+        }
+        console.log('方法二', [].unique2());
+        //方法三
+        Array.prototype.unique3 = function () {
+            var newArr = [];
+            for (var i = 0; i < arrLength; i++) {
+                for (var j = i + 1; j < arrLength; j++) {
+                    if (arr[i] === arr[j]) {
+                        j = ++i;
+                    }
+                }
+                newArr.push(arr[i]);
+            }
+            return newArr;
+        }
+        console.log('方法三', [].unique3());
+        //方法四 
+        Array.prototype.unique4 = function () {
+            var arr = [1, 2, 3, 3, 3, 4, 5, 7, 6, 9, 9, 9];
+            for (var i = 0; i < arr.length; i++) {
+                for (var j = i + 1; j < arr.length; j++) {
+                    if (arr[i] === arr[j]) {
+                        arr.splice(j, 1);
+                        arr.length = arr.length - 1;
+                    }
+                }
+            }
+            return arr;
+        }
+
+        //方法五   對象的屬性
+        Array.prototype.unique5 = function () {
+            var arr = [1, 2, 3, 3, 3, 4, 5, 7, 6, 9, 9, 9];
+            var obj = {};
+            var result = [];
+            for (var i = 0; i < arr.length; i++) {
+                if (!obj[arr[i]]) {
+                    obj[arr[i]] = true;
+                    result.push(arr[i]);
+                }
+            }
+            return result;
+        }
+        console.log('方法五', [].unique5());
+        //方法六   先排序，然后，和後面的項比較 然後移除。 
+        Array.prototype.unique6 = function () {
+            var arr = [1, 2, 3, 3, 3, 4, 5, 7, 6, 9, 9, 9];
+             arr.sort(function(a,b){
+                 return a-b;
+             });
+             for(var i = 0;i<arr.length;i++){
+                if (arr[i]===arr[i+1]){
+                    arr.splice(i,1);
+                    arr.length -=1;
+                }
+             }
+             return arr;
+        }
+        console.log('方法六', [].unique6());
+
+        //方法七   ES5    indexOf 
+        Array.prototype.unique7 = function () {
+            var arr = [1, 2, 3, 3, 3, 4, 5, 7, 6, 9, 9, 9];
+            var newArr = [];
+            arr.forEach(function (item, index,arr) {
+                var falg = arr.indexOf(item,index+1)=== -1;
+                if(falg){
+                    newArr.push(arr[index]);
+                }
+            })
+            return newArr;
+        }
+        console.log('方法七', [].unique7());
+        //方法八   ES6    indexOf
+        Array.prototype.unique8 = function () {
+            var arr = [1, 2, 3, 3, 3, 4, 5, 7, 6, 9, 9, 9];
+            return [...new Set(arr)]
+        }
+        console.log('方法八', [].unique8());
+    </script>
+</body>
+
+</html>
